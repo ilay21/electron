@@ -6,7 +6,7 @@ module.exports = {
     urls: {
         //todo - change this to which url is relevant
         dorledor: 'http://localhost:8080',
-        whatsapp: 'http://www.geektime.co.il' //'https://web.whatsapp.com'
+        whatsapp: 'https://web.whatsapp.com'
     },
     script_paths: {
         dorledor: './scripts/dor-le-dor.js',
@@ -16,6 +16,7 @@ module.exports = {
         whatsapp: 'whatsapp-message'
     },
     error_messages: {
-        unsupported: 'Unspported target for sending messages'
+        unsupported: 'Unspported target for sending messages',
+        already_exist: 'window with the same url already exist'
     }
 };

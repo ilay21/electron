@@ -1,6 +1,6 @@
 const electron = require('electron');
 const fs = require('fs');
-const { BrowserWindow } = electron;
+const {BrowserWindow} = electron;
 
 const createWindow = (options, url, scriptPath) => {
     return new Promise((resolve, reject) => {
@@ -19,4 +19,4 @@ const createWindow = (options, url, scriptPath) => {
     });
 };
 
-module.exports = { createWindow };
+module.exports = {createWindow};

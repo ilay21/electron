@@ -1,25 +1,12 @@
-const config = require('./../config');
 const {ipcMain} = require('electron');
-const whatsappMessageSender = require("./whatsapp-message-sender");
-
-const send = (event, messageObject) => {
-    switch (messageObject.platform) {
-        case 'whatsapp':
-            whatsappMessageSender.send(messageObject);
-            break;
-        default:
-            throw config.error_messages.unsupported;
-            break;
-    }
-};
-
-const close = (event, args) => {
-    //todo - WindowsManager.removeWindow
-};
+const mainSender = require("./main-sender");
+const mainNotifier = require("./main-notifier");
+const mainDismisser = require("./main-dismisser");
 
 const init = () => {
-    ipcMain.on('asynchronous-message', send);
-    ipcMain.on('close-message', close);
+    ipcMain.on('asynchronous-message', mainSender.send);
+    ipcMain.on('asynchronous-reply', mainNotifier.notify);
+    ipcMain.on('close-message', mainDismisser.close);
 };
 
-module.exports = {init, send, close};
+module.exports = {init};

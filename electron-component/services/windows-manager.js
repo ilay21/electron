@@ -1,16 +1,22 @@
 const windowsFactory = require('./windows-factory');
+const config = require('./../config');
 
 let windows = {};
 
 const addWindow = (options, url, scriptUrl) => {
-    if (!windows[url]) {
-        let win = windowsFactory.createWindow(options, url, scriptUrl);
-        windows[url] = win;
-        return win;
-    }
-    else {
-        return null;
-    }
+    return new Promise((resolve, reject) => {
+        if (!windows[url]) {
+            windowsFactory.createWindow(options, url, scriptUrl)
+                .then(win => {
+                    windows[url] = win;
+                    resolve(win);
+                });
+        }
+        else {
+            reject(config.error_messages.already_exist);
+        }
+    });
+
 };
 
 const removeWindow = (url) => {
