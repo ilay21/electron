@@ -1,22 +1,20 @@
-const conf = require('./../config');
-const {ipcMain} = require('electron');
+const config = require('./../config');
+const { ipcMain } = require('electron');
 const windowsManager = require("./windows-manager");
+const whatsappMessageSender = require("./whatsapp-message-sender");
 
-const send = (e, msgObj) => {
-    switch (msgObj.platform) {
+const send = (event, messageObject) => {
+    switch (messageObject.platform) {
         case 'whatsapp':
-            windowsManager.addWindow(
-                conf.defaultBrowserOptions,
-                conf.urls.whatsapp,
-                conf.script_paths.whatsapp)
-                .then((win) => win.webContents
-                    .send(conf.msgs_names.whatsapp, msgObj));
+            whatsappMessageSender.send(messageObject)
+            break;
+        default:
+            throw config.error_messages.unsupported
             break;
     }
 };
 
-const close = (params, a) => {
-    console.log(params, a);
+const close = (event, args) => {
     //todo - WindowsManager.removeWindow
 };
 
@@ -25,5 +23,4 @@ const init = () => {
     ipcMain.on('close-message', close);
 };
 
-
-module.exports = {init, send, close};
+module.exports = { init, send, close };

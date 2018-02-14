@@ -1,7 +1,7 @@
 const communicator = require('./services/communicator');
 const windowsManager = require("./services/windows-manager");
 const electron = require('electron');
-const conf = require('./config');
+const config = require('./config');
 const app = electron.app;
 
 function init() {
@@ -11,25 +11,24 @@ function init() {
 
 function createMainWindow() {
     windowsManager.addWindow(
-        conf.defaultBrowserOptions,
-        conf.urls.dorledor,
-        conf.script_paths.dorledor);
+        config.defaultBrowserOptions,
+        config.urls.dorledor,
+        config.script_paths.dorledor);
 }
 
 function setAppListeners() {
     app
         .on('ready', createMainWindow)
-        .on('window-all-closed', function () {
+        .on('window-all-closed', function() {
             if (process.platform !== 'darwin') {
                 app.quit()
             }
         })
-        .on('activate', function () {
-            if (windowsManager.getWindowByUrl(conf.urls.dorledor) === null) {
+        .on('activate', function() {
+            if (windowsManager.getWindowByUrl(config.urls.dorledor) === null) {
                 createMainWindow()
             }
         });
 }
 
 init();
-

@@ -1,19 +1,11 @@
-const {ipcRenderer} = require('electron');
-
+const { ipcRenderer } = require('electron');
 
 const sendMessage = (event, args) => {
-    console.log(event, args);
 
-    var a = {
-        prop: "value"
-    };
-
+    //todo - implement this module
     setTimeout(() => {
-        ipcRenderer.send('close-message', a);
+        ipcRenderer.send('close-message', {});
     }, 3000)
-    //ipcRenderer.send('asynchronous-message', event.data);
 };
 
 ipcRenderer.on('whatsapp-message', sendMessage);
-
-
