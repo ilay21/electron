@@ -1,15 +1,14 @@
 const config = require('./../config');
-const { ipcMain } = require('electron');
-const windowsManager = require("./windows-manager");
+const {ipcMain} = require('electron');
 const whatsappMessageSender = require("./whatsapp-message-sender");
 
 const send = (event, messageObject) => {
     switch (messageObject.platform) {
         case 'whatsapp':
-            whatsappMessageSender.send(messageObject)
+            whatsappMessageSender.send(messageObject);
             break;
         default:
-            throw config.error_messages.unsupported
+            throw config.error_messages.unsupported;
             break;
     }
 };
@@ -23,4 +22,4 @@ const init = () => {
     ipcMain.on('close-message', close);
 };
 
-module.exports = { init, send, close };
+module.exports = {init, send, close};

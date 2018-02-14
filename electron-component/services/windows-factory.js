@@ -13,7 +13,7 @@ const createWindow = (options, url, scriptPath) => {
                 if (err) {
                     reject(err);
                 }
-                win.webContents.executeJavaScript(data)
+                win.webContents.executeJavaScript(data.toString())
                     .then(() => resolve(win), reject)
             }))
     });

@@ -17,14 +17,14 @@ function createMainWindow() {
 }
 
 function setAppListeners() {
-    app
+    return app
         .on('ready', createMainWindow)
-        .on('window-all-closed', function() {
+        .on('window-all-closed', function () {
             if (process.platform !== 'darwin') {
                 app.quit()
             }
         })
-        .on('activate', function() {
+        .on('activate', function () {
             if (windowsManager.getWindowByUrl(config.urls.dorledor) === null) {
                 createMainWindow()
             }

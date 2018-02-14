@@ -1,10 +1,10 @@
-const { ipcRenderer } = require('electron');
+const {ipcRenderer} = require('electron');
 
 const sendMessage = (event, args) => {
 
     //todo - implement this module
     setTimeout(() => {
-        ipcRenderer.send('close-message', {});
+        ipcRenderer.send('close-message', 'random-message');
     }, 3000)
 };
 
