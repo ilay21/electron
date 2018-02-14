@@ -1,9 +1,9 @@
 const {ipcRenderer} = require('electron');
 
-
-function sendMessage(event) {
-    //let topStoryText = document.getElementsByClassName("top-story-text")[0];
+const sendMessage = (event) => {
+    if (event.origin !== "http://localhost:8080") return;
+    console.log("passed validation");
     ipcRenderer.send('asynchronous-message', event.data);
-}
+};
 
 window.addEventListener("message", sendMessage, false);

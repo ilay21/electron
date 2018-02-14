@@ -1,35 +1,35 @@
-const WindowsManager = require("./components/WindowsManager");
-
+const communicator = require('./services/communicator');
+const windowsManager = require("./services/windows-manager");
 const electron = require('electron');
 const conf = require('./config');
-
-// Module to control application life.
 const app = electron.app;
 
-function initializeCommunicator() {
-    //the way to init the communicator instance:
-    require('./components/Communicator');
+function init() {
+    setAppListeners();
+    communicator.init();
 }
 
-function createWindows() {
-    WindowsManager.addWindow(
+function createMainWindow() {
+    windowsManager.addWindow(
         conf.defaultBrowserOptions,
         conf.urls.dorledor,
-        conf.script_routs.dorledor);
-
-    initializeCommunicator();
+        conf.script_paths.dorledor);
 }
 
-app.on('ready', createWindows);
+function setAppListeners() {
+    app
+        .on('ready', createMainWindow)
+        .on('window-all-closed', function () {
+            if (process.platform !== 'darwin') {
+                app.quit()
+            }
+        })
+        .on('activate', function () {
+            if (windowsManager.getWindowByUrl(conf.urls.dorledor) === null) {
+                createMainWindow()
+            }
+        });
+}
 
-app.on('window-all-closed', function () {
-    if (process.platform !== 'darwin') {
-        app.quit()
-    }
-});
+init();
 
-app.on('activate', function () {
-    if (WindowsManager.getWindowByUrl(conf.urls.dorledor) === null) {
-        createWindows()
-    }
-});

@@ -7,9 +7,12 @@ module.exports = {
         dorledor: 'http://localhost:8080',
         whatsapp: 'http://www.geektime.co.il'//'https://web.whatsapp.com'
     },
-    script_routs: {
+    script_paths: {
         dorledor: './scripts/dor-le-dor.js',
-        whatsapp: './scripts/whatsapp.js',
+        whatsapp: './scripts/whatsapp.js'
+    },
+    msgs_names: {
+        whatsapp: 'whatsapp-message'
     }
 };
 
