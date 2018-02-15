@@ -1,0 +1,16 @@
+{
+    "name": "electron-communicator",
+    "version": "1.0.0",
+    "description": "A minimal Electron POC for using whatsapp web",
+    "main": "main.js",
+    "scripts": {
+        "start": "electron ."
+    },
+    "keywords": [],
+    "author": "Ilay",
+    "license": "CC0-1.0",
+    "devDependencies": {
+        "electron": "~1.7.8"
+    },
+    "dependencies": {}
+}
