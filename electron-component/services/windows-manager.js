@@ -16,7 +16,6 @@ const addWindow = (options, url, scriptUrl) => {
             reject(config.error_messages.already_exist);
         }
     });
-
 };
 
 const removeWindow = (url) => {

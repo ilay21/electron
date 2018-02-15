@@ -1,8 +1,9 @@
 const {ipcRenderer} = require('electron');
 
 const sendMessage = event => {
-    if (event.origin !== "http://localhost:8080") return;
-    //console.log("passed validation");
+
+    //todo - un-comment the next line when we want validation on the origin.
+    //if (event.origin !== "http://localhost:8080") return;
     ipcRenderer.send('asynchronous-message', event.data);
 };
 
