@@ -40,4 +40,10 @@ postMessage is getting 2 params:
 
 2) origin - string represent the url for your source of "dor le dor" dashboard ("*" for all) - 
    I commented out the check of origin - so all should be accepted
+   
+   
+
+🙏 Please try to touch only the file --> scripts/whatsapp.js.
+ 
+Thanks  and good Luck with the Hackathon! 💪 🤘 
 
