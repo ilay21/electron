@@ -1,8 +1,9 @@
 # Electron Communicator
 
 This is a wrapper that will handle the communication between:
-    1) "Dor Le Dor" Dashboard.
-    2) Additional windows. (currently web.whatsapp)
+
+1) "Dor Le Dor" Dashboard.
+2) Additional windows. (currently web.whatsapp)
 
 ## Installing
 
@@ -27,11 +28,11 @@ window.postMessage(
     
 postMessage is getting 2 params:
 
-    1) Object with properties as follow:
-        1.1) platform - string represent the message provider - should by aligned with electron main.
-        1.2) groups - a list with the group names - those we want to recieve this message.
-        1.3) message - string represent the message to send.
+1) Object with properties as follow:
+    1.1) platform - string represent the message provider - should by aligned with electron main.
+    1.2) groups - a list with the group names - those we want to recieve this message.
+    1.3) message - string represent the message to send.
 
-    2) origin - string represent the url for your source of "dor le dor" dashboard ("*" for all) - 
-       I commented out the check of origin - so all should be accepted
+2) origin - string represent the url for your source of "dor le dor" dashboard ("*" for all) - 
+   I commented out the check of origin - so all should be accepted
 
